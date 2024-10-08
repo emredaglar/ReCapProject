@@ -20,7 +20,16 @@ namespace Bussiness.Concrete
 
         public void Add(Car car)
         {
-            _cardal.Add(car);
+            if (car.Description.Length > 2 && car.DailyPrice > 0)
+            {
+                _cardal.Add(car);
+
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
         }
 
         public void Delete(Car car)
@@ -33,14 +42,48 @@ namespace Bussiness.Concrete
             return _cardal.GetAll();
         }
 
-        public List<Car> GetById(int id)
+        public List<Car> GetCarsByBrandId(int id)
         {
-            return _cardal.GetById(id);
+            return _cardal.GetAll(p=>p.BrandId==id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _cardal.GetAll(p => p.ColorId == id);
         }
 
         public void Update(Car car)
         {
             _cardal.Update(car);
         }
+
+        //    public void Add(Car car)
+        //    {
+        //        _cardal.Add(car);
+        //    }
+
+        //    public void Delete(Car car)
+        //    {
+        //        _cardal.Delete(car);
+        //    }
+
+        //    public List<Car> GetAll()
+        //    {
+        //        return _cardal.GetAll();
+        //    }
+
+        //    public List<Car> GetById(int id)
+        //    {
+        //        return _cardal.GetById(id);
+        //    }
+
+        //    public void Update(Car car)
+        //    {
+        //        _cardal.Update(car);
+        //    }
+
+
     }
+
+
 }
