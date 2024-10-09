@@ -1,4 +1,6 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +18,6 @@ namespace DataAccess.Abstract
         //List<Car> GetAll();
 
         //List<Car> GetById(int carId);
+        List<GetCarDetailsDto> GetCarDetails();
     }
 }
