@@ -29,6 +29,20 @@ CarManager carManager = new CarManager(new EfCarDal());
 BrandManager brandManager = new BrandManager(new EfBrandDal());
 ColorManager colorManager=new ColorManager(new EfColorDal());
 
+UserManager userManager=new UserManager(new EfUserDal());
+User user1 = new User();
+user1.FirstName = "Test";
+user1.LastName = "Test";
+user1.Email = "teste";
+user1.Password = "ad";
+userManager.Add(user1);
+
+foreach (var item in userManager.GetAll().Data)
+{
+    Console.WriteLine(item.FirstName);
+}
+
+
 Brand brand1 = new Brand();
 brand1.BrandName = "Focus";
 brandManager.Add(brand1);
@@ -48,16 +62,16 @@ carManager.Add(car1);
 
 car1.BrandId = brand1.BrandId;  // BrandId ve ColorId set edilmeli
 car1.ColorId = color1.ColorId;
-foreach (var car in carManager.getCarDetails())
-{
-    Console.WriteLine(car.CarName+"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
-}
-CarManager carManager1 = new CarManager(new EfCarDal());
-Console.WriteLine("List of cars:");
-foreach (var car in carManager1.getCarDetails())
-{
-    Console.WriteLine($"{car.CarId} - {car.CarName}, Brand: {car.BrandName}, Color: {car.ColorName} Price: {car.DailyPrice}");
-}
+//foreach (var car in carManager.getCarDetails().Data)
+//{
+//    Console.WriteLine(car.CarName+"/"+car.BrandName+"/"+car.ColorName+"/"+car.DailyPrice);
+//}
+//CarManager carManager1 = new CarManager(new EfCarDal());
+//Console.WriteLine("List of cars:");
+//foreach (var car in carManager1.getCarDetails().Data)
+//{
+//    Console.WriteLine($"{car.CarId} - {car.CarName}, Brand: {car.BrandName}, Color: {car.ColorName} Price: {car.DailyPrice}");
+//}
 
 
 

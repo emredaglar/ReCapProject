@@ -11,37 +11,37 @@ using System.Threading.Tasks;
 
 namespace Bussiness.Concrete
 {
-    public class BrandManager : IBrandService
+    public class UserManager : IUserService
     {
-        IBrandDal _brandDal;
+        IUserDal _userdal;
 
-        public BrandManager(IBrandDal brandDal)
+        public UserManager(IUserDal userdal)
         {
-            _brandDal = brandDal;
+            _userdal = userdal;
         }
 
-        public IResult Add(Brand brand)
+        public IResult Add(User user)
         {
+            _userdal.Add(user);
             return new SuccessResult(Messages.Added);
-            _brandDal.Add(brand);
+            
         }
 
-        public IResult Delete(Brand brand)
+        public IResult Delete(User user)
         {
             return new SuccessResult(Messages.Deleted);
-            _brandDal.Delete(brand);
+            _userdal.Delete(user);
         }
 
-        public IDataResult<List<Brand>> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
+            return new SuccessDataResult<List<User>>(_userdal.GetAll());
         }
 
-
-        public IResult Update(Brand brand)
+        public IResult Update(User user)
         {
             return new SuccessResult(Messages.Updated);
-            _brandDal.Update(brand);
+            _userdal.Update(user);
         }
     }
 }
