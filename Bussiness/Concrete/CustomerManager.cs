@@ -38,6 +38,12 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<List<Customer>>(_customerdal.GetAll());
         }
 
+        public IDataResult<Customer> GetById(int customerId)
+        {
+            var customers=_customerdal.Get(c=>c.CustomerId == customerId);
+            return new SuccessDataResult<Customer>(customers);  
+        }
+
         public IResult Update(Customer customer)
         {
             return new SuccessResult(Messages.Updated);

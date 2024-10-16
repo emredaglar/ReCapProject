@@ -43,6 +43,12 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<List<Car>>(_cardal.GetAll(),Messages.Listed);
         }
 
+        public IDataResult<Car> GetById(int carId)
+        {
+            var cars= _cardal.Get(c=>c.CarId == carId);
+            return new SuccessDataResult<Car>(cars);
+        }
+
         public IDataResult<List<GetCarDetailsDto>> getCarDetails()
         {
             return new SuccessDataResult<List<GetCarDetailsDto>>(_cardal.GetCarDetails());

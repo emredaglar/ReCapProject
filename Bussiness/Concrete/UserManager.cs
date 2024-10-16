@@ -38,6 +38,12 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<List<User>>(_userdal.GetAll());
         }
 
+        public IDataResult<User> GetById(int userId)
+        {
+            var users= _userdal.Get(u=>u.UserId == userId);
+            return new SuccessDataResult<User>(users);
+        }
+
         public IResult Update(User user)
         {
             return new SuccessResult(Messages.Updated);
